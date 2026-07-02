@@ -1,0 +1,28 @@
+
+#AUTEUR : GEORGES, ALIENCE 
+
+
+from abc import ABC, abstractmethod
+from decimal import Decimal
+
+
+# Classe abstraite
+class AbstractBill(ABC):
+
+    def __init__(self):
+        self.total = Decimal("0")
+
+    def add_item(self, price, quantity):
+        self.total += Decimal(str(price)) * quantity
+
+    def add_tax(self, tax):
+        self.total += Decimal(str(tax))
+
+    def get_total(self):
+        return self.total
+
+    @abstractmethod
+    def create_document(self):
+        pass
+
+
